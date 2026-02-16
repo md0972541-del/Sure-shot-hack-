@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOLDEN 10 - FIXED - SAFAIT</title>
+    <title>GOLDEN 10 - FINAL SYNC - SAFAIT</title>
     <style>
         :root { --gold: #FFD700; --bg: #000; --neon: #00ffff; }
         body { background: var(--bg); color: #fff; font-family: 'Orbitron', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
@@ -23,7 +23,7 @@
 <body>
 
 <div class="master-ui">
-    <div class="info-bar" id="p_display">SYNCING FIXED DATA...</div>
+    <div class="info-bar" id="p_display">SYNCING DATA...</div>
     <div class="timer" id="timer">00s</div>
     
     <div class="info-bar" style="color:#555">Next Golden Signal In:</div>
@@ -53,8 +53,8 @@
         let totalSec = (now.getHours() * 3600) + (now.getMinutes() * 60) + sec;
         let serial = Math.floor(totalSec / 30);
         
-        // পিরিয়ড ফিক্স: ১৯:১৮:০০ (৭:১৮ PM) তে ৫১৫৯৯ সেট করা হয়েছে (আগে ৫১৫৯৮ ছিল)
-        let base = 51599 - Math.floor(((19*3600)+(18*60))/30);
+        // পিরিয়ড কারেকশন: ২টা পিরিয়ড বেশি ছিল, তাই ১৯:২২ (৭:২২ PM) তে ৫১৬০৫ সেট করা হয়েছে
+        let base = 51605 - Math.floor(((19*3600)+(22*60))/30);
         let currentP = base + serial;
         
         let dStr = now.getFullYear() + (now.getMonth()+1).toString().padStart(2,'0') + now.getDate().toString().padStart(2,'0');
