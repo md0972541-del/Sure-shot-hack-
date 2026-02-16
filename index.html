@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOLDEN 10 - FINAL SYNC - SAFAIT</title>
+    <title>GOLDEN 10 - 6:33PM SYNC - SAFAIT</title>
     <style>
         :root { --gold: #FFD700; --bg: #000; --neon: #00ffff; }
         body { background: var(--bg); color: #fff; font-family: 'Orbitron', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
@@ -15,15 +15,13 @@
         .bs-text { font-size: 35px; font-weight: bold; margin-top: -10px; }
         .countdown-text { font-size: 16px; color: #444; font-weight: bold; }
         .dev-tag { margin-top: 25px; font-size: 10px; color: #333; letter-spacing: 3px; }
-        .pulse { animation: pulse-gold 2s infinite; }
-        @keyframes pulse-gold { 0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); } 70% { box-shadow: 0 0 0 20px rgba(255, 215, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); } }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="master-ui">
-    <div class="info-bar" id="p_display">SYNCING 6:25PM DATA...</div>
+    <div class="info-bar" id="p_display">SYNCING 6:33PM DATA...</div>
     <div class="timer" id="timer">00s</div>
     
     <div class="info-bar" style="color:#555">Next Golden Signal In:</div>
@@ -53,14 +51,14 @@
         let totalSec = (now.getHours() * 3600) + (now.getMinutes() * 60) + sec;
         let serial = Math.floor(totalSec / 30);
         
-        // Ekhon 18:25 (6:25 PM) onujayi period 51491 set kora hoyeche (1 bariye)
-        let base = 51491 - Math.floor(((18*3600)+(25*60))/30);
+        // সন্ধ্যা ১৮:৩৩ (৬:৩৩ PM) অনুযায়ী পিরিয়ড ৫১৫০৮ ফিক্স করা হলো
+        let base = 51508 - Math.floor(((18*3600)+(33*60))/30);
         let currentP = base + serial;
         
         let dStr = now.getFullYear() + (now.getMonth()+1).toString().padStart(2,'0') + now.getDate().toString().padStart(2,'0');
         document.getElementById('p_display').innerText = "PERIOD: " + dStr + "1000" + currentP;
 
-        let interval = 20; 
+        let interval = 10; 
         let nextIn = interval - (currentP % interval);
         document.getElementById('cd_periods').innerText = nextIn + " PERIODS";
 
@@ -71,7 +69,6 @@
         if (nextIn === interval) {
             waitMsg.style.display = "none";
             signalUI.style.display = "block";
-            box.classList.add('pulse');
             box.style.borderColor = "var(--gold)";
 
             let idx = currentP % seed.length;
@@ -84,7 +81,6 @@
         } else {
             waitMsg.style.display = "block";
             signalUI.style.display = "none";
-            box.classList.remove('pulse');
             box.style.borderColor = "#222";
             waitMsg.innerText = "WAITING FOR GOLDEN SIGNAL...";
         }
